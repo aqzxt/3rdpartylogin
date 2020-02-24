@@ -1,0 +1,17 @@
+{% load socialaccount %}
+
+<h1>PAGINA INICIAL</h1>
+
+{% if user.is_authenticated %}
+
+<p>Bem vindo <b>{{ user.username }}</b>!</p>
+<p><a href="{% url 'account_logout' %}">Log out</a>
+
+{% else %}
+
+<p><a href="{% url 'account_signup' %}">Cadastro</a></p>
+<p><a href="{% url 'account_login' %}">Fazer Login</a></p><br>
+<p><a href="{% provider_login_url 'google' %}">Entrar com Google</a></p>
+<p><a href="{% provider_login_url 'facebook' %}">Entrar com Facebook</a></p>
+
+{% endif %}
